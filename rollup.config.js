@@ -9,32 +9,23 @@ import { terser } from "rollup-plugin-terser";
 import scss from "rollup-plugin-scss";
 import analyze from "rollup-plugin-analyzer";
 import visualizer from "rollup-plugin-visualizer";
+import builtins from 'rollup-plugin-node-builtins';
 
 const NODE_ENV = process.env.NODE_ENV || "development";
 
 export default {
   input: "./src/index.tsx",
+  context: "this",
   output: [
-    {
-      file: "./build/bundle.umd.js",
-      format: "umd",
-      name: "universal-datepicker.umd",
-    },
-    {
-      file: "./build/bundle.cjs.js",
-      format: "cjs",
-    },
-    {
-      file: "./build/bundle.iife.js",
-      format: "iife",
-      name: "universal-datepicker.iife",
-    },
     {
       file: "./build/bundle.es.js",
       format: "es",
+      name: "universal-datepicker.es",
+      intro: "var global = window",
     },
   ],
   plugins: [
+    builtins(),
     scss({
       output: "./build/style.css",
       failOnError: true,
@@ -47,7 +38,9 @@ export default {
     babel({
       exclude: "node_modules/**",
     }),
-    resolve(),
+    resolve({
+      mainFields: [ "module", "browser", "main" ]
+    }),
     commonjs(),
     NODE_ENV !== "production" && serve({ contentBase: "build" }),
     NODE_ENV !== "production" && livereload(),
