@@ -10,6 +10,7 @@ import scss from "rollup-plugin-scss";
 import analyze from "rollup-plugin-analyzer";
 import visualizer from "rollup-plugin-visualizer";
 import builtins from 'rollup-plugin-node-builtins';
+import json from "@rollup/plugin-json";
 
 const NODE_ENV = process.env.NODE_ENV || "development";
 
@@ -25,6 +26,7 @@ export default {
     },
   ],
   plugins: [
+    json(),
     builtins(),
     scss({
       output: "./build/style.css",
