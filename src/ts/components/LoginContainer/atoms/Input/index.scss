@@ -1,0 +1,6 @@
+.custom-input {
+    border: solid rem-calc(1) black;
+    &.--error {
+        border-color: red;
+    }
+}

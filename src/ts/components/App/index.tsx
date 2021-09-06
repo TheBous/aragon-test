@@ -1,18 +1,16 @@
-import React, { useState, FC } from "react"; 
-import Title from "../Title";
+import React, { FC } from "react";
+
+import Router from "../Router";
+
+import "../../../scss/index.scss";
 
 const App: FC = (): JSX.Element => {
-    const [showH1, setH1Visibility] = useState<boolean>(false);
-    const toggleH1 = (): void => setH1Visibility((oldH1Visibility) => !oldH1Visibility);
-
-    return (
-        <div data-testid="container">
-            {showH1 && <h1 data-testid="title">Reactssup title</h1>}
-            <span>This is a boilerplate</span>
-            <Title text="Example test" />
-            <button onClick={toggleH1} data-testid="button">Button</button>
-        </div>
-    )
+  
+  return (
+    <div data-testid="container">
+      <Router />
+    </div>
+  );
 };
 
 export default App;

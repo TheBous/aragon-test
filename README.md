@@ -39,7 +39,3 @@ The ERC20 token contract is deployed on rinkeby testnet
 
 Contract code: https://rinkeby.etherscan.io/address/0xff10E56d8C3c1567E0c80677e26EC687B4f1D8D0#code
 address : 0xff10E56d8C3c1567E0c80677e26EC687B4f1D8D0
-
-
-
-gi
