@@ -1,7 +1,8 @@
 import React, { FC } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 
-import LoginContainer from "../LoginContainer";
+import Login from "./routes/Login";
+import User from "./routes/User";
 import Inner from "./atoms/Inner";
 import Outer from "./atoms/Outer";
 
@@ -9,8 +10,9 @@ const RpslsRouter: FC = () => {
   return (
     <Router>
       <Switch>
-        <Inner path="/" exact component={LoginContainer} />
-        <Outer path="/signup" component={LoginContainer} />
+        <Outer path="/" exact component={Login} />
+        <Outer path="/sign" component={Login} />
+        <Inner path="/user" component={User} />
       </Switch>
     </Router>
   );

@@ -22,7 +22,6 @@ const Input: FC<IInputProps> = ({
       className={cx("custom-input", {
         "--error": hasError,
       })}
-      type="text"
       onChange={detachEventAndSend}
       {...props}
     />

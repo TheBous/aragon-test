@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 import Input from "../Input";
-import { isEmailValid } from "../../../../helpers/validators";
+import { isEmailValid } from "../../../../../../helpers/validators";
 
 import "./index.scss";
 
@@ -25,11 +25,13 @@ const Form: FC<IFormProps> = ({ onAction, actionLabel }): JSX.Element => {
           placeholder="Email"
           onInputChange={onEmailChange}
           hasError={!isEmailValid(email)}
+          type="text"
         />
         <Input
           placeholder="Password"
           onInputChange={onPwdChange}
           hasError={!password}
+          type="password"
         />
       </div>
       <div className="__action">
