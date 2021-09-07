@@ -8,7 +8,7 @@ import Outer from "./atoms/Outer";
 
 const RpslsRouter: FC = () => {
   return (
-    <Router>
+    <Router basename="restless-truth-5979.on.fleek.co/">
       <Switch>
         <Outer path="/" exact component={Login} />
         <Outer path="/sign" component={Login} />
