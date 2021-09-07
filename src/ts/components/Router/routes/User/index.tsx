@@ -3,6 +3,7 @@ import { ethers, Contract, providers } from "ethers";
 import abi from "../../../../../contracts/types.json";
 import { TOKEN_ADDR } from "../../../../constants/contract";
 import Input from "../../routes/Login/atoms/Input";
+import Coins from "./atoms/Coins";
 
 const User: FC = () => {
   const [contract, setContract] = useState<Contract>();
@@ -94,6 +95,7 @@ const User: FC = () => {
         />
         <button onClick={send}>Send</button>
       </p>
+      <Coins />
     </>
   );
 };
