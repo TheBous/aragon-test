@@ -16,7 +16,6 @@ const Login: FC = (): JSX.Element => {
       await signup(email, pwd);
       history.push("/user");
     } catch (e) {
-      console.error("error", e);
       setError(true);
     }
   };
@@ -26,7 +25,6 @@ const Login: FC = (): JSX.Element => {
       await signin(email, pwd);
       history.push("/user");
     } catch (e) {
-      console.error("error", e);
       setError(true);
     }
   };

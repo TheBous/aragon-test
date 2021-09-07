@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { ethers, Contract, providers } from "ethers";
 import abi from "../../../../../contracts/types.json";
 import { TOKEN_ADDR } from "../../../../constants/contract";
@@ -14,6 +14,16 @@ const User: FC = () => {
   const [tokenBalance, setTokenBalance] = useState<string>();
   const [addressToSend, setAddressToSend] = useState<string>("");
   const [amountToSend, setAmountToSend] = useState<string>("");
+
+  useEffect(() => {
+    if (provider && account) {
+      provider.on("block", async () => {
+        const balance = await provider.getBalance(account);
+        const balanceInEth = ethers.utils.formatEther(balance);
+        setTokenBalance(balanceInEth);
+      });
+    }
+  }, [provider, account]);
 
   const connect = async () => {
     if (window.ethereum) {
@@ -40,23 +50,18 @@ const User: FC = () => {
 
   const getTokenBalance = async (): Promise<void> => {
     if (provider && account && contract) {
-      const rawBalance = await contract.balanceOf(account);
       const totalSupply = await contract.totalSupply();
-      const decimals = await contract.decimals();
+      const rawBalance = await contract.balanceOf(ethers.utils.formatEther(account));
 
-      const balance = ethers.utils.formatUnits(rawBalance, decimals);
-
-      console.error(balance, totalSupply, account);
-      setTokenBalance(balance);
+      setTokenBalance(rawBalance);
       setTotalSupply(totalSupply);
     }
   };
 
   const mint = () => {
     if (contract && signer) {
-      console.error("methods", contract);
       const contractSigner = contract.connect(signer);
-      contractSigner.mint(20);
+      contractSigner.mint(123456789);
     }
   };
 
@@ -67,8 +72,6 @@ const User: FC = () => {
         addressToSend,
         ethers.utils.parseUnits(amountToSend, 6)
       );
-
-      console.error("send: ", transition);
     }
   };
 
@@ -79,15 +82,19 @@ const User: FC = () => {
       <button onClick={getTokenBalance}>Get Token Balance</button>
       <p>Token Balance: {tokenBalance}</p>
       <p>Total supply: {totalSupply.toString()}</p>
-      <button onClick={mint}>Mint account</button>
+      <p>
+        <button onClick={mint}>Mint account</button>
+      </p>
       <p>
         <Input
+          id="address"
           hasError={false}
           placeholder="Address to send"
           type="text"
           onInputChange={(e) => setAddressToSend(e.currentTarget.value)}
         />
         <Input
+          id="amount"
           hasError={false}
           placeholder="Amount"
           type="text"

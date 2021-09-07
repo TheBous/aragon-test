@@ -3,4 +3,5 @@ export interface IInputProps {
     onInputChange: (updatedValue) => void;
     hasError: boolean;
     type: string;
+    id?: string;
 }

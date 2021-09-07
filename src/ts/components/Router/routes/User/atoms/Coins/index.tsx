@@ -12,7 +12,6 @@ const Coins: FC = () => {
         .then((responses) => Promise.all(responses.map((res) => res.json())))
         .then((jsons) => {
           const [coinsRes, antRes] = jsons;
-          console.error(coinsRes, antRes);
           const finalRes = coinsRes.data.concat(Object.values(antRes.data));
           setCoins(finalRes);
         });
