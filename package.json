@@ -1,6 +1,7 @@
 {
   "name": "reactssup",
   "version": "1.0.0",
+  "homepage": ".",
   "main": "index.js",
   "author": "@TheBous <thebous1993@gmail.com> ()",
   "description": "Boilerplate with React, Rollup, SCSS and Typescript",
