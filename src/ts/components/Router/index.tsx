@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 
 import Login from "./routes/Login";
-import User from "./routes/User";
+import User from "./routes/User/index";
 import Inner from "./atoms/Inner";
 import Outer from "./atoms/Outer";
 
