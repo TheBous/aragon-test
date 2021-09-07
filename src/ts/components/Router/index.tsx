@@ -7,7 +7,6 @@ import Inner from "./atoms/Inner";
 import Outer from "./atoms/Outer";
 
 const RpslsRouter: FC = () => {
-  console.error("herehere");
   return (
     <Router>
       <Switch>
