@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { HashRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 
 import Login from "./routes/Login";
 import User from "./routes/User/index";
