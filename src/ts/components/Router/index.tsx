@@ -10,7 +10,7 @@ const RpslsRouter: FC = () => {
   return (
     <Router>
       <Switch>
-        <Outer path="/" exact component={Login} />
+        <Outer path="/aragon-test/" exact component={Login} />
         <Outer path="/sign" component={Login} />
         <Inner path="/user" component={User} />
       </Switch>
