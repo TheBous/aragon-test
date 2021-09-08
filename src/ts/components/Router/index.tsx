@@ -8,13 +8,17 @@ import Outer from "./atoms/Outer";
 
 const RpslsRouter: FC = () => {
   return (
-    <Router basename="/aragon-test/">
-      <Switch>
-        <Outer path="/" exact component={Login} />
-        <Outer path="/sign" component={Login} />
-        <Inner path="/user" component={User} />
-      </Switch>
-    </Router>
+    // <Router>
+    //   <Switch>
+    //     <Outer path="/" exact component={Login} />
+    //     <Outer path="/sign" component={Login} />
+    //     <Inner path="/user" component={User} />
+    //   </Switch>
+    // </Router>
+    <div>
+      <Login />
+      <User />
+    </div>
   );
 };
 
